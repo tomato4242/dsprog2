@@ -38,10 +38,10 @@ class CalculatorApp(ft.Container):
         self.reset()
 
         self.result = ft.Text(value="0", color=ft.Colors.WHITE, size=20)
-        self.width = 1000
+        self.width = 750
         self.bgcolor = ft.Colors.BLACK
         self.border_radius = ft.border_radius.all(20)
-        self.padding = 20
+        self.padding = 40
         self.content = ft.Column(
             controls=[
                 ft.Row(controls=[self.result], alignment="end"),
