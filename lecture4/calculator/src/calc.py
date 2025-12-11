@@ -1,4 +1,5 @@
 import flet as ft
+import math #高度な計算したいから入れる
 
 
 class CalcButton(ft.ElevatedButton):
@@ -37,7 +38,7 @@ class CalculatorApp(ft.Container):
         self.reset()
 
         self.result = ft.Text(value="0", color=ft.Colors.WHITE, size=20)
-        self.width = 350
+        self.width = 1000
         self.bgcolor = ft.Colors.BLACK
         self.border_radius = ft.border_radius.all(20)
         self.padding = 20
@@ -45,7 +46,7 @@ class CalculatorApp(ft.Container):
             controls=[
                 ft.Row(controls=[self.result], alignment="end"),
                 ft.Row(
-                    controls=[
+                    controls=[   
                         ExtraActionButton(text="AC", button_clicked=self.button_clicked),
                         ExtraActionButton(text="+/-", button_clicked=self.button_clicked),
                         ExtraActionButton(text="%", button_clicked=self.button_clicked),
@@ -54,6 +55,7 @@ class CalculatorApp(ft.Container):
                 ),
                 ft.Row(
                     controls=[
+                        DigitButton(text="SIN", button_clicked=self.button_clicked),
                         DigitButton(text="7", button_clicked=self.button_clicked),
                         DigitButton(text="8", button_clicked=self.button_clicked),
                         DigitButton(text="9", button_clicked=self.button_clicked),
@@ -62,6 +64,7 @@ class CalculatorApp(ft.Container):
                 ),
                 ft.Row(
                     controls=[
+                        DigitButton(text="COS", button_clicked=self.button_clicked),
                         DigitButton(text="4", button_clicked=self.button_clicked),
                         DigitButton(text="5", button_clicked=self.button_clicked),
                         DigitButton(text="6", button_clicked=self.button_clicked),
@@ -70,6 +73,7 @@ class CalculatorApp(ft.Container):
                 ),
                 ft.Row(
                     controls=[
+                        DigitButton(text="TAN", button_clicked=self.button_clicked),
                         DigitButton(text="1", button_clicked=self.button_clicked),
                         DigitButton(text="2", button_clicked=self.button_clicked),
                         DigitButton(text="3", button_clicked=self.button_clicked),
@@ -78,6 +82,8 @@ class CalculatorApp(ft.Container):
                 ),
                 ft.Row(
                     controls=[
+                        DigitButton(text="x²", button_clicked=self.button_clicked),
+                        DigitButton(text="√", button_clicked=self.button_clicked),
                         DigitButton(text="0", expand=2, button_clicked=self.button_clicked),
                         DigitButton(text=".", button_clicked=self.button_clicked),
                         ActionButton(text="=", button_clicked=self.button_clicked),
@@ -123,7 +129,47 @@ class CalculatorApp(ft.Container):
 
             elif float(self.result.value) < 0:
                 self.result.value = str(self.format_number(abs(float(self.result.value))))
-
+        elif data == "SIN":
+            try:
+                value = float(self.result.value)
+                res = math.sin(math.radians(value)) 
+                self.result.value = self.format_number(res)
+                self.new_operand = True
+            except ValueError:
+                self.result.value = "Error"
+        elif data == "COS":
+            try:
+                value = float(self.result.value)
+                res = math.cos(math.radians(value)) 
+                self.result.value = self.format_number(res)
+                self.new_operand = True
+            except ValueError:
+                self.result.value = "Error"
+        elif data == "TAN":
+            try:
+                value = float(self.result.value)
+                res = math.tan(math.radians(value)) 
+                self.result.value = self.format_number(res)
+                self.new_operand = True
+            except ValueError:
+                self.result.value = "Error"    
+        elif data == "√":
+            try:
+                value = float(self.result.value)
+                res = math.sqrt(value)
+                self.result.value = self.format_number(res)
+                self.new_operand = True
+            except ValueError:
+                self.result.value = "Error"
+        elif data == "x²":
+            try:
+                value = float(self.result.value)
+                res = value ** 2
+                self.result.value = self.format_number(res)
+                self.new_operand = True
+            except ValueError:
+                self.result.value = "Error"
+    
         self.update()
 
     def format_number(self, num):
