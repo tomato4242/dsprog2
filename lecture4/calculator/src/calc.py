@@ -208,3 +208,9 @@ def main(page: ft.Page):
 
 
 ft.app(main)
+
+#参考文献
+#1. 'https://flet.dev/docs/tutorials/python-calculator/','Create Calculator app in Python with Flet',(参照日:2025/12/14),
+#2. 'https://docs.python.org/ja/3/library/math.html','math --- 数学関数',(参照日:2025/12/14)
+#3. 'https://www.sejuku.net/blog/63094','【Python入門】よく使うmath-数学関数の使い方まとめ',(参照日:2025/12/14)
+#4. 'https://marusankakusikaku.jp/python/standard-library/math/',Python 標準ライブラリ math 数学関数,(参照日:2025/12/14)
