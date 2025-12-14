@@ -1,5 +1,5 @@
 import flet as ft
-import math #高度な計算したいから入れる
+import math #高度な計算したい
 
 
 class CalcButton(ft.ElevatedButton):
