@@ -250,8 +250,6 @@ def main(page: ft.Page):
             ft.Container(content=content_area, padding=40, expand=True)
         ], expand=True, spacing=0)
     )
-
-    # 最初にメニューを作る
     init_menu()
 
 ft.app(target=main)
